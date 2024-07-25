@@ -1,7 +1,7 @@
 ﻿using Prosigliere.SimpleBlog.Application.UseCases.BlogPost.Common;
 using Prosigliere.SimpleBlog.Domain.Repository;
 
-namespace Prosigliere.SimpleBlog.Application;
+namespace Prosigliere.SimpleBlog.Application.UseCases.BlogPost.ListPosts;
 
 public class ListPosts : IListPosts
 {
@@ -31,7 +31,7 @@ public class ListPosts : IListPosts
             searchOutput.PerPage,
             searchOutput.Total,
             searchOutput.Items
-                .Select(BlogPostModelOutput.FromBlogPost)
+                .Select(BlogPostWithCommentCountModelOutput.FromBlogPost)
                 .ToList()
         );
     }

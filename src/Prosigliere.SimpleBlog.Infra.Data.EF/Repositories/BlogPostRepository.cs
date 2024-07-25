@@ -21,14 +21,11 @@ public class BlogPostRepository : IBlogPostRepository
 
     public async Task<BlogPost> Get(Guid id, CancellationToken cancellationToken)
     {
-        var blogPost = await _blogPosts.AsNoTracking().FirstOrDefaultAsync(
-            x => x.Id == id,
-            cancellationToken
-        );
-        if (blogPost == null)
-        {
-            throw new NotFoundException($"BlogPost with id {id} not found");
-        }
+        var blogPost = await _blogPosts
+                .AsNoTracking()
+                .Include(c => c.Comments)
+                .FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
+        NotFoundException.ThrowIfNull(blogPost, $"CoBlogPostllection with id {id} not found");
         return blogPost!;
     }
 
@@ -43,7 +40,9 @@ public class BlogPostRepository : IBlogPostRepository
         CancellationToken cancellationToken)
     {
         var toSkip = (input.Page - 1) * input.PerPage;
-        var query = _blogPosts.AsNoTracking();
+        var query = _blogPosts
+            .Include(p => p.Comments)
+            .AsNoTracking();
 
         if (!string.IsNullOrWhiteSpace(input.Search))
             query = query.Where(x => x.Title.Contains(input.Search) 

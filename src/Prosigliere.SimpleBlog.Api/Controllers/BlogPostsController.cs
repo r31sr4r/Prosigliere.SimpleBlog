@@ -5,13 +5,13 @@ using Prosigliere.SimpleBlog.Application.UseCases.BlogPost.CreateBlogPost;
 using Prosigliere.SimpleBlog.Application.UseCases.BlogPost.GetBlogPost;
 using Prosigliere.SimpleBlog.Application.UseCases.BlogPost.Common;
 using Prosigliere.SimpleBlog.Api.ApiModels.Response;
-using Prosigliere.SimpleBlog.Application;
 using Prosigliere.SimpleBlog.Domain.SeedWork.SearchebleRepository;
+using Prosigliere.SimpleBlog.Application.UseCases.BlogPost.ListPosts;
 
 namespace Prosigliere.SimpleBlog.Api.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/posts")]
     public class BlogPostsController : ControllerBase
     {
         private readonly IMediator _mediator;
@@ -85,7 +85,7 @@ namespace Prosigliere.SimpleBlog.Api.Controllers
 
             var output = await _mediator.Send(input, cancellation);
 
-            return Ok(new ApiResponseList<BlogPostModelOutput>(output));
+            return Ok(new ApiResponseList<BlogPostWithCommentCountModelOutput>(output));
         }
 
         [HttpPost("{id:guid}/comments")]
@@ -94,11 +94,11 @@ namespace Prosigliere.SimpleBlog.Api.Controllers
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status422UnprocessableEntity)]
         public async Task<IActionResult> AddComment(
             [FromRoute] Guid id,
-            [FromBody] AddCommentInput input,
+            [FromBody] AddCommentApiInput apiInput,
             CancellationToken cancellationToken
         )
         {
-            input.BlogPostId = id;
+            var input = new AddCommentInput(id, apiInput.Content);            
             var result = await _mediator.Send(input, cancellationToken);
             return CreatedAtAction(
                 nameof(GetById),

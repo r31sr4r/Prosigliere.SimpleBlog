@@ -2,9 +2,8 @@
 using Prosigliere.SimpleBlog.Application.Common;
 using Prosigliere.SimpleBlog.Domain.SeedWork.SearchebleRepository;
 
-namespace Prosigliere.SimpleBlog.Application;
-
-  public class ListBlogPostsInput
+namespace Prosigliere.SimpleBlog.Application.UseCases.BlogPost.ListPosts;
+public class ListBlogPostsInput
     : PaginatedListInput,
     IRequest<ListBlogPostsOutput>
 {

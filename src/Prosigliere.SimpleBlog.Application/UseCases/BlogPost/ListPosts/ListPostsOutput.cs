@@ -1,16 +1,16 @@
 ﻿using Prosigliere.SimpleBlog.Application.Common;
 using Prosigliere.SimpleBlog.Application.UseCases.BlogPost.Common;
 
-namespace Prosigliere.SimpleBlog.Application;
+namespace Prosigliere.SimpleBlog.Application.UseCases.BlogPost.ListPosts;
 
  public class ListBlogPostsOutput
-        : PaginatedListOutput<BlogPostModelOutput>
+        : PaginatedListOutput<BlogPostWithCommentCountModelOutput>
 {
     public ListBlogPostsOutput(
         int page,
         int perPage,
         int total,
-        IReadOnlyList<BlogPostModelOutput> items)
+        IReadOnlyList<BlogPostWithCommentCountModelOutput> items)
         : base(page, perPage, total, items)
     { }
 }
