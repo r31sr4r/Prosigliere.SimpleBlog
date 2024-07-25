@@ -4,11 +4,11 @@ using Prosigliere.SimpleBlog.Domain.SeedWork.SearchebleRepository;
 
 namespace Prosigliere.SimpleBlog.Application;
 
-  public class ListPostsInput
+  public class ListBlogPostsInput
     : PaginatedListInput,
-    IRequest<ListPostsOutput>
+    IRequest<ListBlogPostsOutput>
 {
-    public ListPostsInput(
+    public ListBlogPostsInput(
         int page = 1,
         int perPage = 15,
         string search = "",
@@ -17,7 +17,7 @@ namespace Prosigliere.SimpleBlog.Application;
         : base(page, perPage, search, sort, dir)
     { }
 
-    public ListPostsInput()
+    public ListBlogPostsInput()
         : base(1, 15, "", "", SearchOrder.Asc)
     { }
 }

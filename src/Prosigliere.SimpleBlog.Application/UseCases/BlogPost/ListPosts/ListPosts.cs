@@ -12,8 +12,8 @@ public class ListPosts : IListPosts
         _blogPostRepository = blogPostRepository;
     }
 
-    public async Task<ListPostsOutput> Handle(
-        ListPostsInput request,
+    public async Task<ListBlogPostsOutput> Handle(
+        ListBlogPostsInput request,
         CancellationToken cancellationToken)
     {
         var searchOutput = await _blogPostRepository.Search(
@@ -26,7 +26,7 @@ public class ListPosts : IListPosts
                 ),
             cancellationToken
         );
-        return new ListPostsOutput(
+        return new ListBlogPostsOutput(
             searchOutput.CurrentPage,
             searchOutput.PerPage,
             searchOutput.Total,

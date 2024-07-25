@@ -1,0 +1,12 @@
+version: '3.4'
+
+services:
+
+  netsimpleblog.db:
+    container_name: simpleblogdb
+    hostname: simpleblogdb
+    image: mysql
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: S1mpl3bl0g@

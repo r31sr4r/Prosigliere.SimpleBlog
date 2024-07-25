@@ -2,5 +2,5 @@
 
 namespace Prosigliere.SimpleBlog.Application;
 
-public interface IListPosts : IRequestHandler<ListPostsInput, ListPostsOutput>
+public interface IListPosts : IRequestHandler<ListBlogPostsInput, ListBlogPostsOutput>
 {}

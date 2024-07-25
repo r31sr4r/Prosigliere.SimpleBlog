@@ -3,10 +3,10 @@ using Prosigliere.SimpleBlog.Application.UseCases.BlogPost.Common;
 
 namespace Prosigliere.SimpleBlog.Application;
 
- public class ListPostsOutput
+ public class ListBlogPostsOutput
         : PaginatedListOutput<BlogPostModelOutput>
 {
-    public ListPostsOutput(
+    public ListBlogPostsOutput(
         int page,
         int perPage,
         int total,
