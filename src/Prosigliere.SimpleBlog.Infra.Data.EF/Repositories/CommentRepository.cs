@@ -1,11 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Prosigliere.SimpleBlog.Application;
+using Prosigliere.SimpleBlog.Application.Exceptions;
 using Prosigliere.SimpleBlog.Domain.Entity;
 using Prosigliere.SimpleBlog.Domain.Repository;
 
 namespace Prosigliere.SimpleBlog.Infra.Data.EF.Repositories;
 
-  public class CommentRepository : ICommentRepository
+public class CommentRepository : ICommentRepository
     {
         private readonly ProsigliereSimpleBlogDbContext _context;
         private DbSet<Comment> _comments => _context.Set<Comment>();

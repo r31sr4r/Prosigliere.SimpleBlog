@@ -1,4 +1,4 @@
-﻿namespace Prosigliere.SimpleBlog.Application;
+﻿namespace Prosigliere.SimpleBlog.Application.Exceptions;
 
 public class NotFoundException : ApplicationException
 {

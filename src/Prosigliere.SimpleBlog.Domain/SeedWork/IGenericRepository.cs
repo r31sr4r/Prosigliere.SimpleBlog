@@ -1,4 +1,4 @@
-﻿namespace Prosigliere.SimpleBlog.SeedWork;
+﻿namespace Prosigliere.SimpleBlog.Domain.SeedWork;
 
 public interface IGenericRepository<TAggregate> : IRepository
     where TAggregate : AggregateRoot

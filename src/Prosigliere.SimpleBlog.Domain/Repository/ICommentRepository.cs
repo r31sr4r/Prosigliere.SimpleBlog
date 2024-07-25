@@ -1,5 +1,5 @@
 ﻿using Prosigliere.SimpleBlog.Domain.Entity;
-using Prosigliere.SimpleBlog.SeedWork;
+using Prosigliere.SimpleBlog.Domain.SeedWork;
 
 namespace Prosigliere.SimpleBlog.Domain.Repository;
 

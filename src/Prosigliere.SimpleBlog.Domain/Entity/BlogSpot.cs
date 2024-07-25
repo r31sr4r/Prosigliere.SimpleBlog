@@ -1,5 +1,5 @@
 using Prosigliere.SimpleBlog.Domain.Exceptions;
-using Prosigliere.SimpleBlog.SeedWork;
+using Prosigliere.SimpleBlog.Domain.SeedWork;
 
 namespace Prosigliere.SimpleBlog.Domain.Entity;
 public class BlogPost : AggregateRoot
